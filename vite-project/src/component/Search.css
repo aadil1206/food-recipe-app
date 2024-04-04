@@ -1,0 +1,18 @@
+.inpGrp{
+    width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  background-color:  #F36A40;
+  border-radius: 1rem;
+  padding: 8px;
+}
+.inp{
+    background-color:  #F36A40;
+    border: none;  
+}
+.inp:focus{
+    background-color:  #F36A40;
+    border: none;  
+    box-shadow: none;
+}
