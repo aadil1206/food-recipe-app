@@ -27,7 +27,7 @@ function Cuisine() {
       {cuisine.map((item) => {
         return (
             <div className='col-3'>
-       <div key={item.id} className="card">
+       <div key={item.id} className="card" style={{backgroundColor:"#F36A40"}}>
         <img src={item.image} alt="" className='card-img'/>
 
         <p>{item.title}</p>
