@@ -11,6 +11,7 @@ import Catagory from './component/Category'
 function App() {
 
   return (
+    
    
       <div className='App-main'>
       <Router>
