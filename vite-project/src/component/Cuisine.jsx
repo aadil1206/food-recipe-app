@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 import { Link, useParams } from "react-router-dom";
-import axios from 'axios'
-import './Home.css'
+import axios from "axios";
+import "./Home.css";
 
 function Cuisine() {
   let params = useParams();
@@ -10,13 +10,17 @@ function Cuisine() {
 
   const getCuisine = async (name) => {
     try {
-      const response= await axios.get( `https://api.spoonacular.com/recipes/complexSearch?apiKey=${import.meta.env.VITE_API_KEY}&number=9&cuisine=${name}`)
-      console.log(response,"response")
-      setCuisine(response.data.results)
+      const response = await axios.get(
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${
+          import.meta.env.VITE_API_KEY
+        }&number=9&cuisine=${name}`
+      );
+      console.log(response, "response");
+      setCuisine(response.data.results);
     } catch (error) {
-      console.log("error",error)
+      console.log("error", error);
     }
-  }
+  };
   useEffect(() => {
     getCuisine(params.type);
     console.log(params.type);
@@ -26,21 +30,21 @@ function Cuisine() {
     <div className="Home-main row">
       {cuisine.map((item) => {
         return (
-            <div className='col-3'>
-       <div key={item.id} className="card" style={{backgroundColor:"#F36A40"}}>
-        <img src={item.image} alt="" className='card-img'/>
+          <div className="col-3">
+            <div
+              key={item.id}
+              className="card"
+              style={{ backgroundColor: "#F36A40" }}
+            >
+              <img src={item.image} alt="" className="card-img" />
 
-        <p>{item.title}</p>
-        </div>
-        
-       </div>
-       
+              <p>{item.title}</p>
+            </div>
+          </div>
         );
       })}
     </div>
   );
 }
-
-
 
 export default Cuisine;

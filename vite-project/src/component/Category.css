@@ -1,31 +1,27 @@
 .list {
-    display: flex;
-    justify-content: center;
-    margin: 1rem;
-  }
-  
-  .nav-link1 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    text-decoration: none;
-    color: #F36A40;
-    /* width: 6rem;
-    height: 6rem; */
-    cursor: pointer;
-  
-  }
-  
-  .nav-link1 h4 {
-    color: #F36A40;
-    font-size: 2rem;
-    text-align: center;
-  }
-  
-  .nav-link1 svg {
-    color: #F36A40;
-    font-size: 3rem;
-  }
-  
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.navLink {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  text-decoration: none;
+  color: #f36a40;
+ 
+  cursor: pointer;
+}
+.navLink h4 {
+  color: #f36a40;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.navLink svg {
+  color: #f36a40;
+  font-size: 3rem;
+}
