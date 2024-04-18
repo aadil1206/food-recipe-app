@@ -61,13 +61,6 @@ const Recipe = () => {
     getrecipeFood1();
     getIngredients();
   }, []);
-  const cors = require("cors");
-  const corsOptions = {
-    origin: "http://localhost:5173",
-    credentials: true, //access-control-allow-credentials:true
-    optionSuccessStatus: 200,
-  };
-  app.use(cors(corsOptions));
   return (
     <div className="RecipeCardMain">
       <h1>{recipeFood?.title}</h1>
