@@ -21,7 +21,7 @@ const Recipe = () => {
           location.state.id
         }/ingredientWidget.json?apiKey=${import.meta.env.VITE_API_KEY}`
       );
-      console.log(response.data.ingredients, "response");
+
       setingredients(response.data.ingredients);
     } catch (error) {
       console.log("error", error);
@@ -34,7 +34,7 @@ const Recipe = () => {
           location.state.id
         }/information?apiKey=${import.meta.env.VITE_API_KEY}`
       );
-      console.log(response, "response");
+
       setrecipeFood(response.data);
     } catch (error) {
       console.log("error", error);
@@ -45,8 +45,6 @@ const Recipe = () => {
       const response12 = await axios.get(
         `https://public.opendatasoft.com/explore/dataset/geonames-all-cities-with-a-population-1000/api`
       );
-      console.log(response12, "response12345");
-      // setrecipeFood(response.data)
     } catch (error) {
       console.log("error", error);
     }
