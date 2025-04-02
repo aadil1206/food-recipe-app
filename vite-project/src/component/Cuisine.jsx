@@ -23,7 +23,6 @@ function Cuisine() {
   };
   useEffect(() => {
     getCuisine(params.type);
-    
   }, [params.type]);
 
   return (

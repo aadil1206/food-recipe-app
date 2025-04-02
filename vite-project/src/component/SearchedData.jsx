@@ -12,7 +12,7 @@ const SearchedData = () => {
           import.meta.env.VITE_API_KEY
         }&number=6&query=${name}`
       );
-    
+
       setSearchedFood(response.data.recipes);
     } catch (error) {
       console.log("error", error);
