@@ -7,7 +7,7 @@ import Cuisine from "../component/Cuisine";
 
 const index = () => {
   return (
-    <div style={{ width: "100%", height: "100%" }}>
+    <div className="w-[100%] h-[100%] ">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/search/:item" element={<SearchedData />} />
