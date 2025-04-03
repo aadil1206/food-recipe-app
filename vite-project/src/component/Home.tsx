@@ -21,7 +21,7 @@ const Home = () => {
       console.log("error", error);
     }
   };
-  const reduceWordLength = (word, maxLength) => {
+  const reduceWordLength = (word:string, maxLength:number) => {
     if (word.length > maxLength) {
       return word
         .substring(0, maxLength)

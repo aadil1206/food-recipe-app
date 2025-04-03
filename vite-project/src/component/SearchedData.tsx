@@ -18,7 +18,11 @@ const SearchedData = () => {
       console.log("error", error);
     }
   };
-  const reduceWordLength = (word, maxLength) => {
+  type reductype ={
+    word:string,
+    maxLength : number
+  }
+  const reduceWordLength = ({word, maxLength} : reductype) => {
     if (word.length > maxLength) {
       return word
         .substring(0, maxLength)
@@ -28,14 +32,22 @@ const SearchedData = () => {
     }
     return word;
   };
+  
   useEffect(() => {
     getSearchedFood(params.item);
   }, [params.item]);
+
+  type mapprops = {
+    id:number,
+    title:string,
+    summary:string
+  }
+
   return (
     <div>
       {SearchedFood &&
         SearchedFood.length > 0 &&
-        SearchedFood.map((item) => {
+        SearchedFood.map((item:mapprops) => {
           return (
             <div className="col-3">
               <div key={item?.id} className="card">
