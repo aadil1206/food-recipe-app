@@ -11,15 +11,21 @@ import {
   InputGroupText,
   Label,
 } from "reactstrap";
+import {FormEvent , ChangeEvent} from '../types'
 
 const Search = () => {
-  const [input, setInput] = useState();
+  const [input, setInput] = useState<string>();
   const navigate = useNavigate();
 
-  const submitHandler = (e) => {
+  const submitHandler = (e:FormEvent) => {
     e.preventDefault();
     navigate("/search/" + input);
   };
+
+  const handlechange=(e:ChangeEvent) =>{
+  
+    setInput(e.target.value)
+  }
   return (
     <div className="mb-5">
       <form onSubmit={submitHandler}>
@@ -33,7 +39,7 @@ const Search = () => {
             name="name"
             id="name"
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e)=>handlechange(e)}
             placeholder="name"
             className="col-11 inp"
             style={{ marginLeft: "1rem" }}
