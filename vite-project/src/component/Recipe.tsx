@@ -10,10 +10,65 @@ import axios from "axios";
 import "./Recipe.css";
 
 const Recipe = () => {
+
+  type Ingredient = {
+    id: number;
+    aisle: string;
+    image: string;
+    consistency: string;
+    name: string;
+    nameClean: string;
+    original: string;
+    originalName: string;
+    amount: number;
+    unit: string;
+    meta: string[];
+  };
+  
+  type InstructionStep = {
+    number: number;
+    step: string;
+    ingredients: { id: number; name: string; localizedName: string; image: string }[];
+    equipment: { id: number; name: string; localizedName: string; image: string }[];
+    length?: { number: number; unit: string };
+  };
+  
+  type Recipe = {
+    id: number;
+    image: string;
+    imageType: string;
+    title: string;
+    readyInMinutes: number;
+    servings: number;
+    sourceUrl: string;
+    vegetarian: boolean;
+    vegan: boolean;
+    glutenFree: boolean;
+    dairyFree: boolean;
+    veryHealthy: boolean;
+    cheap: boolean;
+    veryPopular: boolean;
+    sustainable: boolean;
+    lowFodmap: boolean;
+    weightWatcherSmartPoints: number;
+    gaps: string;
+    aggregateLikes: number;
+    healthScore: number;
+    creditsText: string;
+    pricePerServing: number;
+    extendedIngredients: Ingredient[];
+    summary: string;
+    dishTypes: string[];
+    diets: string[];
+    instructions: string;
+    analyzedInstructions: { name: string; steps: InstructionStep[] }[];
+  };
+
+  
   const location = useLocation();
   const navigate = useNavigate();
-  const [recipeFood, setrecipeFood] = useState([]);
-  const [ingredients, setingredients] = useState([]);
+  const [recipeFood, setrecipeFood] = useState<Recipe | null>(null);
+  const [ingredients, setingredients] = useState<Ingredient[]>([]);
   const getIngredients = async () => {
     try {
       const response = await axios.get(
