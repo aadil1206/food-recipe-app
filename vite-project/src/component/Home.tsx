@@ -6,7 +6,59 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const [Food, setFood] = useState([]);
+  type Ingredient = {
+    id: number;
+    aisle: string;
+    image: string;
+    consistency: string;
+    name: string;
+    nameClean: string;
+    original: string;
+    originalName: string;
+    amount: number;
+    unit: string;
+    meta: string[];
+  };
+  
+  type InstructionStep = {
+    number: number;
+    step: string;
+    ingredients: { id: number; name: string; localizedName: string; image: string }[];
+    equipment: { id: number; name: string; localizedName: string; image: string }[];
+    length?: { number: number; unit: string };
+  };
+  
+  type Recipe = {
+    id: number;
+    image: string;
+    imageType: string;
+    title: string;
+    readyInMinutes: number;
+    servings: number;
+    sourceUrl: string;
+    vegetarian: boolean;
+    vegan: boolean;
+    glutenFree: boolean;
+    dairyFree: boolean;
+    veryHealthy: boolean;
+    cheap: boolean;
+    veryPopular: boolean;
+    sustainable: boolean;
+    lowFodmap: boolean;
+    weightWatcherSmartPoints: number;
+    gaps: string;
+    aggregateLikes: number;
+    healthScore: number;
+    creditsText: string;
+    pricePerServing: number;
+    extendedIngredients: Ingredient[];
+    summary: string;
+    dishTypes: string[];
+    diets: string[];
+    instructions: string;
+    analyzedInstructions: { name: string; steps: InstructionStep[] }[];
+  };
+  const [Food, setFood] = useState<Recipe[]>();
   const navigate = useNavigate();
   const getRecData = async () => {
     try {

@@ -4,7 +4,61 @@ import axios from "axios";
 
 const SearchedData = () => {
   let params = useParams();
-  const [SearchedFood, setSearchedFood] = useState([]);
+
+  type Ingredient = {
+    id: number;
+    aisle: string;
+    image: string;
+    consistency: string;
+    name: string;
+    nameClean: string;
+    original: string;
+    originalName: string;
+    amount: number;
+    unit: string;
+    meta: string[];
+  };
+  
+  type InstructionStep = {
+    number: number;
+    step: string;
+    ingredients: { id: number; name: string; localizedName: string; image: string }[];
+    equipment: { id: number; name: string; localizedName: string; image: string }[];
+    length?: { number: number; unit: string };
+  };
+  
+  type Recipe = {
+    id: number;
+    image: string;
+    imageType: string;
+    title: string;
+    readyInMinutes: number;
+    servings: number;
+    sourceUrl: string;
+    vegetarian: boolean;
+    vegan: boolean;
+    glutenFree: boolean;
+    dairyFree: boolean;
+    veryHealthy: boolean;
+    cheap: boolean;
+    veryPopular: boolean;
+    sustainable: boolean;
+    lowFodmap: boolean;
+    weightWatcherSmartPoints: number;
+    gaps: string;
+    aggregateLikes: number;
+    healthScore: number;
+    creditsText: string;
+    pricePerServing: number;
+    extendedIngredients: Ingredient[];
+    summary: string;
+    dishTypes: string[];
+    diets: string[];
+    instructions: string;
+    analyzedInstructions: { name: string; steps: InstructionStep[] }[];
+  };
+
+  const [SearchedFood, setSearchedFood] = useState<Recipe[]>([]);
   const getSearchedFood = async (name) => {
     try {
       const response = await axios.get(
@@ -37,17 +91,13 @@ const SearchedData = () => {
     getSearchedFood(params.item);
   }, [params.item]);
 
-  type mapprops = {
-    id:number,
-    title:string,
-    summary:string
-  }
+
 
   return (
     <div>
       {SearchedFood &&
         SearchedFood.length > 0 &&
-        SearchedFood.map((item:mapprops) => {
+        SearchedFood.map((item) => {
           return (
             <div className="col-3">
               <div key={item?.id} className="card">
