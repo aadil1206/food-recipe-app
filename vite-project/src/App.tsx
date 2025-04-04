@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
 
-import axios from "axios";
 import "./App.css";
 import Index from "./routes/index";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
