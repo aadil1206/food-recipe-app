@@ -72,11 +72,12 @@ const SearchedData = () => {
       console.log("error", error);
     }
   };
-  type reductype ={
-    word:string,
-    maxLength : number
-  }
-  const reduceWordLength = ({word, maxLength} : reductype) => {
+  type ReduceType = {
+    word: string;
+    maxLength: number;
+  };
+  
+  const reduceWordLength = ({ word, maxLength }: ReduceType): string => {
     if (word.length > maxLength) {
       return word
         .substring(0, maxLength)
@@ -109,7 +110,7 @@ const SearchedData = () => {
                   <p>{item?.title}</p>
                 </div>
                 <p className="cardSum">
-                  {reduceWordLength(item?.summary, 150)}
+                {reduceWordLength({ word: item?.summary ?? "", maxLength: 150 })}
                 </p>
               </div>
             </div>
