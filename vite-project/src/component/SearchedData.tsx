@@ -59,7 +59,7 @@ const SearchedData = () => {
   };
 
   const [SearchedFood, setSearchedFood] = useState<Recipe[]>([]);
-  const getSearchedFood = async (name) => {
+  const getSearchedFood = async (name:string) => {
     try {
       const response = await axios.get(
         `https://api.spoonacular.com/recipes/random?apiKey=${
@@ -89,7 +89,11 @@ const SearchedData = () => {
   };
   
   useEffect(() => {
-    getSearchedFood(params.item);
+     if (params.item) {
+
+ getSearchedFood(params.item);
+     }
+   
   }, [params.item]);
 
 
