@@ -61,7 +61,7 @@ function Cuisine() {
 
   const [cuisine, setCuisine] = useState<Recipe[]>([]);
 
-  const getCuisine = async (name) => {
+  const getCuisine = async (name:string) => {
     try {
       const response = await axios.get(
         `https://api.spoonacular.com/recipes/complexSearch?apiKey=${
@@ -74,9 +74,12 @@ function Cuisine() {
       console.log("error", error);
     }
   };
-  useEffect(() => {
+useEffect(() => {
+  if (params.type) {
     getCuisine(params.type);
-  }, [params.type]);
+  }
+}, [params.type]);
+
 
   return (
     <div className="Home-main row">
